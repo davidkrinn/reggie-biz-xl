@@ -121,3 +121,18 @@ p {
     background: #ccc;
     cursor: not-allowed;
 }
+
+.falling-emoji {
+    position: fixed;
+    font-size: 2em;
+    pointer-events: none;
+    z-index: 1000;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}

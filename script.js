@@ -53,6 +53,28 @@ function handleReset() {
 function updateDisplay() {
     moneyDisplay.textContent = Math.floor(money);
     clicksDisplay.textContent = clicks;
+    
+    // Trigger cascade when money reaches 50
+    if (Math.floor(money) === 50) {
+        triggerCascade();
+    }
+}
+
+// Cascade effect
+function triggerCascade() {
+    for (let i = 0; i < 200; i++) {
+        setTimeout(() => {
+            const emoji = document.createElement('div');
+            emoji.className = 'falling-emoji';
+            emoji.textContent = '$';
+            emoji.style.left = Math.random() * 100 + '%';
+            emoji.style.animationDelay = Math.random() * 0.5 + 's';
+            document.body.appendChild(emoji);
+            
+            // Remove element after animation
+            setTimeout(() => emoji.remove(), 3600);
+        }, i * 20);
+    }
 }
 
 // Render upgrades
